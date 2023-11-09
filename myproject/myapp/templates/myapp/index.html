@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота 8</title>
+    <style>
+        .table-title {
+            font-weight: bold;
+        }
+        .student-info {
+            font-style: italic;
+            color: blue;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td {
+            text-align: center;
+        }
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center-text">Лабораторна робота 8</h1>
+    <p class="student-info center-text">Пухальський О.В., КН-2002Б</p>
+
+    <h2 class="table-title">Employees</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Middle Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Education</th>
+            <th>Department</th>
+            <th>Position</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.middle_name }}</td>
+            <td>{{ employee.address }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>{{ employee.get_education_display }}</td>
+            <td>{{ employee.department.department_name }}</td>
+            <td>{{ employee.position.position_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="table-title">Departments</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Department Name</th>
+            <th>Phone</th>
+            <th>Room Number</th>
+        </tr>
+        {% for department in departments %}
+        <tr>
+            <td>{{ department.id }}</td>
+            <td>{{ department.department_name }}</td>
+            <td>{{ department.phone }}</td>
+            <td>{{ department.room_number }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="table-title">Positions</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Position Name</th>
+            <th>Salary</th>
+            <th>Bonus Percentage</th>
+        </tr>
+        {% for position in positions %}
+        <tr>
+            <td>{{ position.id }}</td>
+            <td>{{ position.position_name }}</td>
+            <td>{{ position.salary }}</td>
+            <td>{{ position.bonus_percentage }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="table-title">Projects</h2>
+    <table>
+        <tr>
+            <th>Project Number</th>
+            <th>Project Name</th>
+            <th>Completion Date</th>
+            <th>Funding Amount</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.id }}</td>
+            <td>{{ project.project_name }}</td>
+            <td>{{ project.completion_date }}</td>
+            <td>{{ project.funding_amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="table-title">Project Executions</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Project</th>
+            <th>Department</th>
+            <th>Start Date</th>
+        </tr>
+        {% for execution in executions %}
+        <tr>
+            <td>{{ execution.id }}</td>
+            <td>{{ execution.project.project_name }}</td>
+            <td>{{ execution.department.department_name }}</td>
+            <td>{{ execution.start_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
